@@ -1,5 +1,5 @@
 import React from 'react';
-import * as d3 from 'd3';
+import * as d3 from 'd3'; //you probably don't need this unless you're drawing stuff with javascript!
 import './puzzle.css';
 
 //these are not actually going to be used, just for your own pleasure of seeing your answer work and your puzzle title and name :P

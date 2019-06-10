@@ -41,8 +41,15 @@ h1,h2,h3,h4,h6 {
   font-weight:600; 
 }
 
+h2 {
+  padding: 10px;
+  font-size:35px;
+}
+
 h5 {
   margin:0px;
+  font-size: 15px;
+  font-style: italic;
   font-weight:400;
 }
 
@@ -96,6 +103,7 @@ form {
 .header, .footer {
   font-style: italic;
   font-weight: 700;
+  margin: 10px;
 }
 
 .puzzlename {
@@ -125,6 +133,30 @@ form {
   margin: 12px;
 }
 
+.body {
+  text-align: left;
+}
+
+.authorsNotes ul {
+  list-style: disc outside none;
+  padding-left: 20px;
+}
+
+.authorsNotes li {
+  margin-bottom: 10px;
+}
+
+.margined {
+  margin: 12px;
+}
+
+.correctGuess {
+  color: green;
+  margin: -4px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
 .centered {
   font-family: 'Julz Handwritten';
   position: absolute;
@@ -141,15 +173,15 @@ form {
 }
 
 .hcentered {
-  font-family: 'Open Sans', sans-serif;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 600px;
-  max-width:90%;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 50px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .puzzle:hover img{ 

@@ -38,8 +38,20 @@ class App extends Component {
   }
 
   render() {
-    var content = require( './puzzle.js' );
-    var hasFlavor = typeof content.Flavor !== 'undefined';
+    var puzzleComponent = require( './puzzle.js' );
+    var solutionComponent = require( './solution.js' );
+    var hasFlavor = typeof puzzleComponent.Flavor !== 'undefined';
+
+    let authorsNotes;
+    if (solutionComponent.AuthorsNotes) {
+      authorsNotes = (
+        <div className={authorsNotes}>
+          <hr />
+          <h2>Author's Notes</h2>
+          <solutionComponent.AuthorsNotes />
+        </div>
+      );
+    }
 
     return (
     <div className="hcentered">
@@ -48,13 +60,28 @@ class App extends Component {
           <div style={ { fontSize: '2em', fontWeight: '700', fontStyle: 'italic' } }> PUZZLE&nbsp;POTLUCK&nbsp;X </div>
         </a>
       </div>
-      { this.renderTitle( content.Constants.title ) }
-      { this.renderWriters( content.Constants.writer ) }
-      { hasFlavor ? <content.Flavor/> : <br/> }
-      <content.Puzzle/>
+      { this.renderTitle( puzzleComponent.Constants.title ) }
+      { this.renderWriters( puzzleComponent.Constants.writer ) }
+      { hasFlavor ? <puzzleComponent.Flavor/> : <br/> }
+      <puzzleComponent.Puzzle/>
       { this.renderAnswerChecker( ) }
-      <span id="answer" style={{visibility: "hidden"}}>content.Constants.answer</span>
-      <br/>
+      <span id="answer" style={{visibility: "hidden"}}>puzzleComponent.Constants.answer</span>
+      <div className="footer">
+        <a href="./">
+          <div style={ { fontSize: '2em', fontWeight: '700', fontStyle: 'italic' } }> PUZZLE&nbsp;POTLUCK&nbsp;X </div>
+        </a>
+      </div>
+      <div className="margined">
+          { this.renderTitle( "Solution - " + puzzleComponent.Constants.title) }
+          <div className="correctGuess">
+            ANSWER – {puzzleComponent.Constants.answer}
+          </div>
+        { this.renderWriters( puzzleComponent.Constants.writer ) }
+      </div>
+      <div className="body">
+        <solutionComponent.Body/>
+        {authorsNotes}
+      </div>
       <div className="footer">
         <a href="./">
           <div style={ { fontSize: '2em', fontWeight: '700', fontStyle: 'italic' } }> PUZZLE&nbsp;POTLUCK&nbsp;X </div>
@@ -63,7 +90,6 @@ class App extends Component {
     </div>
     );
   }
-  
 }
 
 
